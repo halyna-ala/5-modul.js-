@@ -1,47 +1,57 @@
-// Заказ продукта 2.0
-// Задание
-// Функция makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) составляет 
-// и возвращает сообщение о покупке ремонтных дроидов. Она объявляет три параметра, 
-// значения которых будут задаваться во время её вызова.
+class Storage {
+    #items
+    
+    constructor (items) {
+    this.#items = items;
+  }
+  
+  getItems() {
+    return this.#items;
+  }
+  
+  addItem(newItem) {
+    this.#items.push(newItem);
+  }
+  
+  removeItem(item) {
+    const itemIndex = this.#items.indexOf(item);
+    this.#items.splice(itemIndex, 1);
+  }
+  }
+  // Пиши код выше этой строки
+  const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+  console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+  storage.addItem("Дроид");
+  console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+  storage.removeItem("Пролонгер");
+  console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+  
 
-// orderedQuantity - количество дроидов в заказе
-// pricePerDroid - цена одного дроида
-// deliveryFee - стоимость доставки
-// Дополни код функции так, чтобы она возвращала сообщение о заказе в формате Вы 
-// заказали дроидов на сумму <сумма заказа> кредитов. Доставка (<цена доставки> кредитов) 
-// включена в сумму заказа.. Не забудь о цене доставки при вычислениях общей стоимости.
+
+
+
+// Задача. Хранилище 2.0
+// Задание
+// Выполни рефакторинг заменив функцию-конструктор Storage на класс с методами. 
+// Сделай так, чтобы свойство items было приватным.
+
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той 
+// последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
 
 // Тесты
-// Объявлена функция makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee).
-// Вызов makeOrderMessage(2, 100, 50) возвращает 'Вы заказали дроидов на сумму 250 кредитов.
-//  Доставка (50 кредитов) включена в сумму заказа.'.
-// Вызов makeOrderMessage(4, 300, 100) возвращает 'Вы заказали дроидов на сумму 1300 кредитов. 
-// Доставка (100 кредитов) включена в сумму заказа.'.
-// Вызов makeOrderMessage(10, 70, 200) возвращает 'Вы заказали дроидов на сумму 900 кредитов.
-// Доставка (200 кредитов) включена в сумму заказа.'.
-    
-  
-    
-//   function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
-//     // Пиши код ниже этой строки
-//   const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
-//     const message =`Вы заказали дроидов на ${totalPrice} кредитов. Доставка (${deliveryFee} 
-// кредитов) включена в сумму заказа.`;
-//     console.log(message);
-//     // Пиши код выше этой строки
-//     return message;
-//   };
-//     console.log(makeOrderMessage(2, 100, 50));
-//     console.log(makeOrderMessage(4, 300, 100));
-//     console.log(makeOrderMessage(10, 70, 200));
-
-function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
-    // Пиши код ниже этой строки
-  
-    const message = `Вы заказали дроидов на сумму 
-    ${orderedQuantity * pricePerDroid + deliveryFee} 
-    кредитов. Доставка (${deliveryFee} кредитов) включена в сумму заказа.`;
-  
-    // Пиши код выше этой строки
-    return message;
-}
+// Объявлен класс Storage.
+// Свойство items в классе Storage объявлено приватным.
+// Конструктор класса принимает свойство items.
+// Вызов Storage.prototype.hasOwnProperty('getItems') возвращает true.
+// Вызов Storage.prototype.hasOwnProperty('addItem') возвращает true.
+// Вызов Storage.prototype.hasOwnProperty('removeItem') возвращает true.
+// В результате вызова new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]) 
+// значение переменной storage это объект.
+// Вызов Storage.prototype.isPrototypeOf(storage) возвращает true.
+// У объекта storage нет свойства items.
+// Первый вызов storage.getItems(), сразу после инциализации экземпляра,
+//  возвращает массив ["Нанитоиды", "Пролонгер", "Антигравитатор"].
+// Второй вызов, storage.getItems(), после вызова storage.addItem('Дроид'),
+//  возвращает массив ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"].
+// Третий вызов storage.getItems(), после вызова storage.removeItem('Пролонгер'), 
+// возвращает массив ["Нанитоиды", "Антигравитатор", "Дроид"]

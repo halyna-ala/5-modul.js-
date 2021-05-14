@@ -1,38 +1,187 @@
-// Объявление и вызов функции
-// Функция - это подпрограмма, независимая часть кода, предназначенная для многократного 
-// выполнения конкретной задачи с разными начальными значениями.
-// Функцию можно представить как чёрный ящик, она получает что-то на входе (данные), и 
-// возвращает что-то на выходе (результат выполнения кода внутри неё).
+function StringBuilder(baseValue) {
+  this.value = baseValue;
+  };
+  StringBuilder.prototype.getValue = function(){
+  return this.value = `${this.value}`;
+  };
+  StringBuilder.prototype.padEnd = function(str) {
+  this.value =  `${this.value}` + `${str}`;
+  };
+  StringBuilder.prototype.padStart = function(str) {
+  this.value =  `${str}` + `${this.value}`;
+  };
+  StringBuilder.prototype.padBoth = function(str) {
+  this.value= `${str}` + `${this.value}` + `${str}`;
+  }
+  // Пиши код выше этой строки
+  const builder = new StringBuilder('.');
+  console.log(builder.getValue()); // '.'
+  builder.padStart('^');
+  console.log(builder.getValue()); // '^.'
+  builder.padEnd('^');
+  console.log(builder.getValue()); // '^.^'
+  builder.padBoth('=');
+  console.log(builder.getValue()); // '=^.^='
 
-// // 1. Объявление функции multiply
-// function multiply() {
-//   // Тело функции
-//   console.log('Это лог при вызове функции multiply');
-// }
+// function StringBuilder({value} = {}) {
+//   this.baseValue = value;
+//   };
+//   StringBuilder.prototype.getValue = function(){
+//   return this.value;
+//   };
+//   StringBuilder.prototype.padEnd = function(str) {
+//   this.value += (str);
+//   };
+//   StringBuilder.prototype.padStart = function(str) {
+//   this.value = (str) + this.value;
+//   };
+//   StringBuilder.prototype.padBoth = function(str) {
+//   this.value= (str) + this.value + (str);
+//   }
+//   // Пиши код выше этой строки
+//   const builder = new StringBuilder('.');
+//   console.log(builder.getValue()); // '.'
+//   builder.padStart('^');
+//   console.log(builder.getValue()); // '^.'
+//   builder.padEnd('^');
+//   console.log(builder.getValue()); // '^.^'
+//   builder.padBoth('=');
+//   console.log(builder.getValue()); // '=^.^='
 
-// // 2. Вызовы функции multiply
-// multiply(); // 'Это лог при вызове функции multiply'
-// multiply(); // 'Это лог при вызове функции multiply'
-// multiply(); // 'Это лог при вызове функции multiply'
-// Объявление функции начинается с ключевого слова function, за которым идёт её имя - 
-// глагол отвечающий на вопрос «Что сделать?» и пара круглых скобок. Тело функции заключено в
-//  фигурные скобки {} и содержит инструкции, которые необходимо выполнить при её вызове. Затем, 
-//  когда необходимо, функция вызывается с помощью имени и пары круглых скобок.
 
+
+  // function StringBuilder({value} = {}) {
+  //   this.value = value;
+  //   };
+  //   StringBuilder.prototype.getValue = function(){
+  //   return this.value;
+  //   };
+  //   StringBuilder.prototype.padEnd = function(str) {
+  //   this.value.push(str);
+  //   };
+  //   StringBuilder.prototype.padStart = function(str) {
+  //   this.value.unshift(str);
+  //   };
+  //   StringBuilder.prototype.padBoth = function(str) {
+  //   this.value = unshift(str);
+  //   }
+  //   // Пиши код выше этой строки
+  //   const builder = new StringBuilder('.');
+  //   console.log(builder.getValue()); // '.'
+  //   // builder.padStart('^');
+  //   // console.log(builder.getValue()); // '^.'
+  //   builder.padEnd('^');
+  //   console.log(builder.getValue()); // '^.^'
+  //   builder.padBoth('=');
+  //   console.log(builder.getValue()); // '=^.^='
+
+
+    // function StringBuilder(baseValue) {
+    //   this.value = baseValue;
+    //   };
+    //   StringBuilder.prototype.getValue = function(){
+    //   return this.value;
+    //   };
+    //   StringBuilder.prototype.padEnd = function(str) {
+    //   this.value = `${str}` + `${this.value}`;
+    //   };
+    //   StringBuilder.prototype.padStart = function(str) {
+    //   this.value = `${this.value}`+`${str}`; };
+    //   StringBuilder.prototype.padBoth = function(str) {
+    //   this.value = `${str}` + `${this.value}`+`${str}`; };
+    //   // Пиши код выше этой строки
+    //   const builder = new StringBuilder('.');
+    //   console.log(builder.getValue()); // '.'
+    //   builder.padStart('^');
+    //   console.log(builder.getValue()); // '^.'
+    //   builder.padEnd('^');
+    //   console.log(builder.getValue()); // '^.^'
+    //   builder.padBoth('=');
+    //   console.log(builder.getValue()); // '=^.^='
+
+
+
+//       Конструктор строк
 // Задание
-// Объяви функцию sayHi, внутри которой добавь console.log() со строкой 'Привет, это моя первая 
-// функция!'.
+// С помощью Function Declaration напиши функцию-конструктор StringBuilder, 
+// которая принимает один параметр baseValue - произвольную строку, которая
+//  записывается на создаваемый объект в свойство value.
 
-// После объявления вызови функцию sayHi.
+// Добавь методы на прототип:
+
+// getValue() - возвращает текущее значение свойства value.
+// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения свойства value 
+// объекта, который вызывает этот метод.
+// padStart(str) - получает парметр str (строку) и добавляет её в начало значения свойства value 
+// объекта, который вызывает этот метод.
+// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в конец значения свойства 
 
 // Тесты
-// Ожидается объявление Function Declaration.
-// Функции присвоено имя sayHi.
-// В теле функции sayHi есть console.log('Привет, это моя первая функция!').
-// После объявления есть вызов функции sayHi.
+// Объявлена функция StringBuilder(baseValue).
 
-// Пиши код ниже этой строки
-function sayHi(){
-    console.log('Привет, это моя первая функция!')
-  }
-  sayHi();
+// Вызов StringBuilder.prototype.hasOwnProperty('getValue') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padEnd') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padStart') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padBoth') возвращает true.
+
+// В результате вызова new StringBuilder('.') значение переменной builder это объект.
+
+// Вызов StringBuilder.prototype.isPrototypeOf(builder) возвращает true.
+
+// У объекта builder есть свойство value.
+
+// Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку '.'.
+
+// Второй вызов builder.getValue(), после вызова builder.padStart('^'), возвращает строку '^.'.
+
+// Третий вызов builder.getValue(), после вызова builder.padEnd('^'), возвращает строку '^.^'.
+
+// Четвёртый вызов builder.getValue(), после вызова builder.padBoth('='), возвращает строку '=^.^='.
+
+
+
+// Конструктор строк
+// Задание
+// С помощью Function Declaration напиши функцию-конструктор StringBuilder, 
+// которая принимает один параметр baseValue - произвольную строку, которая
+// записывается на создаваемый объект в свойство value.
+
+// Добавь методы на прототип:
+
+// getValue() - возвращает текущее значение свойства value.
+// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения 
+// свойства value объекта, который вызывает этот метод.
+// padStart(str) - получает парметр str (строку) и добавляет её в начало значения 
+// свойства value объекта, который вызывает этот метод.
+// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в конец 
+// значения свойства value объекта, который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той 
+// последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+
+// Тесты
+// Объявлена функция StringBuilder(baseValue).
+
+// Вызов StringBuilder.prototype.hasOwnProperty('getValue') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padEnd') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padStart') возвращает true.
+
+// Вызов StringBuilder.prototype.hasOwnProperty('padBoth') возвращает true.
+
+// В результате вызова new StringBuilder('.') значение переменной builder это объект.
+
+// Вызов StringBuilder.prototype.isPrototypeOf(builder) возвращает true.
+
+// У объекта builder есть свойство value.
+
+// Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку '.'.
+
+// Второй вызов builder.getValue(), после вызова builder.padStart('^'), возвращает строку '^.'.
+
+// Третий вызов builder.getValue(), после вызова builder.padEnd('^'), возвращает строку '^.^'.
+
+// Четвёртый вызов builder.getValue(), после вызова builder.padBoth('='), возвращает строку '=^.^='.

@@ -1,45 +1,58 @@
-// Операторы сравнения >, >=, < и <=
-// Используются для сравнения двух значений. Результатом своего выполнения возвращают 
-// буль - true или false, то есть «да» или «нет».
+class StringBuilder {
+  #value;
+  constructor (baseValue) {
+  this.#value = baseValue;
+}
 
-// > - больше
-// < - меньше
-// >= - больше или равно
-// <= - меньше или равно
-// const a = 2;
-// const b = 5;
+getValue() {
+  return this.#value;
+}
 
-// console.log(a > b); // false
-// console.log(b > a); // true
-// console.log(a >= b); // false
-// console.log(b >= a); // true
+padEnd(str) {
+  this.#value += str;
+}
 
-// console.log(a < b); // true
-// console.log(b < a); // false
-// console.log(a <= b); // true
-// console.log(b <= a); // false
+padStart(str) {
+  this.#value = str + this.#value;
+}
+
+padBoth(str) {
+  this.padStart(str);
+  this.padEnd(str);
+}
+}
+
+// Пиши код выше этой строки
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // '.'
+builder.padStart('^');
+console.log(builder.getValue()); // '^.'
+builder.padEnd('^');
+console.log(builder.getValue()); // '^.^'
+builder.padBoth('=');
+console.log(builder.getValue()); // '=^.^=
+
+
+
+// Задача. Конструктор строк 2.0
 // Задание
-// Функция isAdult объявляет один параметр age (возраст), значение 
-// которого будет задаваться во время её вызова. Присвой переменной 
-// passed выражение проверки возраста пользователя на совершеннолетие.
-// Человек считается совершеннолетним в возрасте 18 лет и старше.
+// Выполни рефакторинг заменив функцию-конструктор StringBuilder на класс с методами. 
+// Сделай так, чтобы свойство value было приватным.
+
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той 
+// последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
 
 // Тесты
-// Объявлена функция isAdult(age).
-// В выражении проверки используется оператор >=.
-// Вызов isAdult(20) возвращает true.
-// Вызов isAdult(14) возвращает false.
-// Вызов isAdult(8) возвращает false.
-// Вызов isAdult(37) возвращает true.
-
-
-
-
-
-function isAdult(age) {
-    // Пиши код ниже этой строки
-    const passed = age>=18;
-  console.log(passed);
-    // Пиши код выше этой строки
-    return passed;
-  }
+// Объявлен класс StringBuilder.
+// Свойство value в классе StringBuilder объявлено приватным.
+// Вызов StringBuilder.prototype.hasOwnProperty('getValue') возвращает true.
+// Вызов StringBuilder.prototype.hasOwnProperty('padEnd') возвращает true.
+// Вызов StringBuilder.prototype.hasOwnProperty('padStart') возвращает true.
+// Вызов StringBuilder.prototype.hasOwnProperty('padBoth') возвращает true.
+// В результате вызова new StringBuilder('.') значение переменной builder это объект.
+// Вызов StringBuilder.prototype.isPrototypeOf(builder) возвращает true.
+// У объекта builder нет свойства value.
+// Первый вызов builder.getValue(), сразу после инциализации экземпляра, возвращает строку '.'.
+// Второй вызов builder.getValue(), после вызова builder.padStart('^'), возвращает строку '^.'.
+// Третий вызов builder.getValue(), после вызова builder.padEnd('^'), возвращает строку '^.^'.
+// Четвёртый вызов builder.getValue(), после вызова builder.padBoth('='), возвращает строку '=^.^='.

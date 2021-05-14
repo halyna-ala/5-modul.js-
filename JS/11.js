@@ -1,32 +1,77 @@
-// Математические операторы 2.0
+class Car {
+  #brand;
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.model = model;
+    this.price = price;
+  }
+  getBrand() {
+  return this.#brand;
+  }
+  changeBrand(newBrand) {
+  this.#brand = newBrand;
+  }
+}
+
+
+
+// Приватные свойства
+// Инкапсуляция - это концепция позволяющая скрыть внутренние детали класса. 
+// Пользователь класса должен получать доступ только к публичному интерфейсу -
+//  набору публичных свойств и методов класса.
+
+// В классах инкапсуляция реализуется приватными свойствами, доступ к которым 
+// можно получить только внутри класса. Это одно из отличий классов и функций-конструкторов - 
+// в классах легко объявить приватные свойства.
+
+// Допустим почта пользователя должна быть недоступна из вне, то есть приватна. 
+// Добавляя к имени свойства символ # мы делаем его приватным. Объявление приватного свойства до 
+// инциализации в конструкторе - обязательно.
+
+// class User {
+//   // Необязательное объявление публичных свойств
+//   name;
+//   // Обязательное объявление приватных свойств
+//   #email;
+
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.#email = email;
+//   }
+
+//   getEmail() {
+//     return this.#email;
+//   }
+
+//   changeEmail(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
+// const mango = new User({ name: 'Манго', email: 'mango@mail.com' });
+
+// mango.changeEmail('mango@supermail.com');
+// console.log(mango.getEmail()); // mango@supermail.com
+// console.log(mango.#email); // Будет ошибка, это приватное свойство
+// Методы класса также могут быть приватными, то есть доступны только в теле класса. 
+// Для этого перед их именем необходимо поставить символ #.
+
 // Задание
-// Функция calculateTotalPrice считает и возвращает общую сумму покупки. 
-// Она принимает два параметра, значения которых будут задаваться во время её вызова.
+// Выполни рефакторинг класса Car так, чтобы свойство brand было приватным и добавь 
+// два метода для публичного интерфейса, для чтения и изменения этого свойства.
 
-// orderedQuantity - количество единиц товара в заказе;
-// pricePerItem - цена одной единицы товара.
-// Дополни код функции так, чтобы в переменную totalPrice записывалась общая сумма покупки, 
-// результат умножения кол-ва товаров на цену одного.
-
+// getBrand() - возвращает значение приватного свойства brand.
+// changeBrand(newBrand) - изменяет значение приватного свойства brand на newBrand.
 // Тесты
-// Объявлена функция calculateTotalPrice (orderedQuantity, pricePerItem).
-// Вызов calculateTotalPrice(5, 100) возвращает 500.
-// Вызов calculateTotalPrice(8, 60) возвращает 480.
-// Вызов calculateTotalPrice('3, 400) возвращает 1200.
-// Вызов calculateTotalPrice(1, 3500) возвращает 3500.
-// Вызов calculateTotalPrice(12, 70) возвращает 840.
-// Вызов функции со случайными, но валидными аргументами, возвращает правильное значение.
-
-function calculateTotalPrice (orderedQuantity, pricePerItem) {
-    // Пиши код ниже этой строки
-    const totalPrice = orderedQuantity*pricePerItem;
-  console.log(totalPrice);
-    // Пиши код выше этой строки
-    return totalPrice;
-  };
-  calculateTotalPrice(5, 100);
-  calculateTotalPrice(8, 60);
-  calculateTotalPrice(3, 400);
-   calculateTotalPrice(1, 3500);
-  calculateTotalPrice(12, 70);
-  
+// Объявлен класс Car.
+// Свойство brand в классе Car объявлено приватным.
+// Конструктор класса принимает объект со свойствами brand, model и price.
+// В результате вызова new Car({ brand: 'Audi', model: 'Q3', price: 36000 }) 
+// получится объект { model: 'Q3', price: 36000 }.
+// В результате вызова new Car({ brand: 'BMW', model: 'X5', price: 58900 })
+//  получится объект { model: 'X5', price: 58900 }.
+// В результате вызова new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }) 
+// получится объект { model: 'Murano', price: 31700 }.
+// У экземпляра нет публичного свойства brand.
+// Метод getBrand() возвращает значение приватного свойства brand.
+// Метод changeBrand('Honda') изменяет значение приватного свойства brand на 'Honda'.

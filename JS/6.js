@@ -1,43 +1,57 @@
-// Заказ продукта
+function Storage (items) {
+    this.items = items;
+    }
+    Storage.prototype.getItems = function() {
+    return this.items;
+    };
+    Storage.prototype.addItem = function(newItem){
+    this.items.push(newItem);
+    };
+    Storage.prototype.removeItem = function(item) {
+    const indexItem = this.items.indexOf(item);
+      this.items.splice(indexItem, 1);
+    };
+    // Пиши код выше этой строки
+    const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+    console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+    storage.addItem('Дроид');
+    console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+    storage.removeItem('Пролонгер');
+    console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
 
+
+
+
+// Задача. Хранилище
 // Задание
-// Магазин по продаже ремонтных дроидов готов к открытию, осталось написать скрипт для 
-// их заказа. Объяви переменные и присвой им соответствующие значения:
-// pricePerDroid - цена одного дроида, значение 800;
-// orderedQuantity - количество дроидов в заказе, значение 6;
-// deliveryFee - стоимость доставки, значение 50;
-// totalPrice - общая сумма заказа к оплате, не забудь о стоимости доставки;
-// message - сообщение о состоянии заказа в формате; Вы заказали дроидов на сумму <сумма заказа>
-//  кредитов. Доставка (<цена доставки> кредитов) включена в сумму заказа.
+// С помощью Function Declaration напиши функцию-конструктор 
+// Storage, которая будет создавать объекты для управления складом товаров. 
+// Функция ожидает только один аргумент - начальный массив товаров, который 
+// записывается на создаваемый объект в свойство items.
+
+// Добавь методы на прототип:
+
+// getItems() - возвращает массив текущих товаров в свойстве items объекта,
+//  который вызывает этот метод.
+// addItem(newItem) - принимает новый товар newItem и добавляет его в массив 
+// товаров в свойстве items объекта, который вызывает этот метод.
+// removeItem(item) - принимает товар item и удаляет его из массива товаров 
+// в свойстве items объекта, который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в 
+// той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
 
 // Тесты
-// Объявлена переменная orderedQuantity.
-// Значение переменной orderedQuantity это число 6.
-// Объявлена переменная pricePerDroid.
-// Значение переменной pricePerDroid это число 800.
-// Объявлена переменная deliveryFee.
-// Значение переменной deliveryFee это число 50.
-// Объявлена переменная totalPrice.
-// Значение переменной totalPrice это число 4850.
-// Объявлена переменная message.
-// Значение переменной message это строка 'Вы заказали дроидов на сумму 4850 кредитов. 
-// Доставка (50 кредитов) включена в сумму заказа.'
-// Полезно
-// В строке message должна быть точка в конце предложения!
-// const orderedQuantity = 6;
-// const pricePerDroid = 800;
-// const deliveryFee = 50;
-// const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
-
-// const message = `Вы заказали дроидов на сумму ${totalPrice} кредитов. 
-// Доставка (${deliveryFee} кредитов) включена в сумму заказа.`;
-
-// console.log(message);
-
-const orderedQuantity = 6;
-const pricePerDroid = 800;
-const deliveryFee = 50;
-const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
-const message = `Вы заказали дроидов на сумму ${totalPrice} кредитов. Доставка (${deliveryFee} кредитов) включена в сумму заказа.`
-
-console.log(message);
+// Объявлена функция Storage(items).
+// Вызов Storage.prototype.hasOwnProperty('getItems') возвращает true.
+// Вызов Storage.prototype.hasOwnProperty('addItem') возвращает true.
+// Вызов Storage.prototype.hasOwnProperty('removeItem') возвращает true.
+// В результате вызова new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]) 
+// значение переменной storage это объект.
+// Вызов Storage.prototype.isPrototypeOf(storage) возвращает true.
+// У объекта storage есть свойство items.
+// Первый вызов storage.getItems(), сразу после инциализации экземпляра, возвращает массив 
+// ["Нанитоиды", "Пролонгер", "Антигравитатор"].
+// Второй вызов, storage.getItems(), после вызова storage.addItem('Дроид'), возвращает массив 
+// ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"].
+// Третий вызов storage.getItems(), после вызова storage.removeItem('Пролонгер'), возвращает массив
+//  ["Нанитоиды", "Антигравитатор", "Дроид"].
